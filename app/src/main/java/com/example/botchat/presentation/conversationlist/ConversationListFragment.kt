@@ -63,6 +63,7 @@ class ConversationListFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.conversationsRecyclerView.adapter = null
         _binding = null
     }
 

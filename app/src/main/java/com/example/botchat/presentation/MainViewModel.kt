@@ -19,9 +19,7 @@ class MainViewModel(
     val isWebSocketConnected: StateFlow<Boolean> = _isWebSocketConnected
 
     init {
-        viewModelScope.launch {
-            chatRepository.clearSentMessagesOnLaunch()
-        }
+        clearSentMessages()
 
         viewModelScope.launch {
             chatRepository.getNetworkStatus().collect { status ->
@@ -33,6 +31,12 @@ class MainViewModel(
             chatRepository.getWebSocketConnectionStatus().collect { isConnected ->
                 _isWebSocketConnected.value = isConnected
             }
+        }
+    }
+
+    fun clearSentMessages() {
+        viewModelScope.launch {
+            chatRepository.clearSentMessagesOnLaunch()
         }
     }
 }

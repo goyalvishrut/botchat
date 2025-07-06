@@ -75,4 +75,10 @@ class MainActivity : AppCompatActivity() {
             .addToBackStack(null)
             .commit()
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mainViewModel.clearSentMessages()
+        _binding = null
+    }
 }

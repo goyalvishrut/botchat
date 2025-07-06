@@ -86,6 +86,7 @@ class ChatListFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.messagesRecyclerView.adapter = null
         _binding = null
     }
 
